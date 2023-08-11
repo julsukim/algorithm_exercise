@@ -20,7 +20,7 @@ for tc in range(1, T+1):
 
     P = int(input())
     bus_stop = [int(input()) for _ in range(P)]
-    print(bus_stop)
+
     print(f'#{tc}', end= ' ')
     for x in bus_stop:
         print(cnt[x], end = ' ')
