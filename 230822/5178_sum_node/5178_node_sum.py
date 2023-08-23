@@ -6,9 +6,7 @@ def node_sum(l, N):
     if l <= N:
         a = node_sum(l*2, N)
         b = node_sum(l*2+1, N)
-        if a == None and b != None:
-            return b
-        elif a != None and b == None:
+        if a != None and b == None:
             return a
         elif a != None and b != None:
             return a+b
