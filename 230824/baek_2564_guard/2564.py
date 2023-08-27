@@ -5,7 +5,8 @@
 import sys
 sys.stdin = open('input.txt')
 
-block = {
+# 블록 동서남북 번호에 따른 맞은편 번호
+b_num = {
     1: 2,
     2: 1,
     3: 4,
@@ -14,37 +15,36 @@ block = {
 
 W, H = map(int, input().split())
 N = int(input())
-arr = [list(map(int, input().split())) for _ in range(N+1)]
 
 stores = []
-for i in range(N+1):
-    k = arr[i][1]
+for i in range(N+1):        # 가게의 블록 위치, 좌표 값으로 정리하기
+    b_dir, dis = map(int, input().split())
     loc = {
-        1: (1, 0, k),
-        2: (2, H, k),
-        3: (3, k, 0),
-        4: (4, k, W)
+        1: (1, 0, dis),
+        2: (2, H, dis),
+        3: (3, dis, 0),
+        4: (4, dis, W)
     }
-    stores.append(loc[arr[i][0]])
+    stores.append(loc[b_dir])
 
-B, X, Y = stores.pop()
-dis = 0
-for i in stores:
-    b, x, y = i
-    if i[0] != block[B]:
-        dis += abs(x - X)
-        dis += abs(y - Y)
-    else:
-        if B == 1 or B == 2:
-            dis += H
-            if y + Y > (W - y) + (W - Y):
-                dis += abs((W - y) + (W - Y))
+gb, gx, gy = stores.pop()   # 경비원의 현재 위치
+distance = 0
+for store in stores:
+    b, x, y = store
+    if store[0] != b_num[gb]:       # 가게가 반대편 블록에 있지 않으면
+        distance += abs(x - gx)
+        distance += abs(y - gy)
+    else:                           # 가게가 반대편 블록에 있으면
+        if gb == 1 or gb == 2:
+            distance += H
+            if y + gy > (W - y) + (W - gy):     # 시계방향이 빠르다면
+                distance += (W - y) + (W - gy)
             else:
-                dis += y + Y
+                distance += y + gy
         else:
-            dis += W
-            if x + X > (H - x) + (H - X):
-                dis += abs((H - x) + (H - X))
+            distance += W
+            if x + gx > (H - x) + (H - gx):
+                distance += (H - x) + (H - gx)
             else:
-                dis += x + X
-print(dis)
+                distance += x + gx
+print(distance)
