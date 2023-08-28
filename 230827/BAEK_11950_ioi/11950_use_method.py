@@ -2,24 +2,26 @@
 하얀색 , 파란색, 빨간색이 적어도 한줄 들어가기만 하면 되는 경우이다.
 행 기준으로 하얀색의 기준은 ~i 까지, 파란색은 i+1 ~ j , 빨간색은 j+1~N 이다.
 '''
+import sys
+sys.stdin = open('input.txt')
 
+for _ in range(int(input())):
+    N, M = map(int,input().split())
+    arr = [input() for _ in range(N)]
 
-N, M = map(int,input().split())
-arr = [input() for _ in range(N)]
+    max_v = 0
+    for i in range(N-2):  # 흰색 영역 인덱스 설정
+        for j in range(i+1, N-1):  # 파랑색 영역 인덱스 설정 그리고 나머지는 빨강영역이다.
+            cnt = 0
+            for s in range(i+1):           # 하얀 영역
+                cnt += arr[s].count('W')   # W의 개수를 세라
+            for s in range(i+1, j+1):      # 파란 영역
+                cnt += arr[s].count('B')   # B의 개수를 세라
+            for s in range(j+1, N):        # 빨간 영역
+                cnt += arr[s].count('R')   # R의 개수를 세라
+            max_v = max(max_v, cnt)
 
-max_v = 0
-for i in range(N-2):  # 흰색 영역 인덱스 설정
-    for j in range(i+1, N-1):  # 파랑색 영역 인덱스 설정 그리고 나머지는 빨강영역이다.
-        cnt = 0
-        for s in range(i+1):           #하얀 영역
-            cnt += arr[s].count('W') # W의 개수를 세라
-        for s in range(i+1, j+1):      # 파란 영역
-            cnt += arr[s].count('B') # B의 개수를 세라
-        for s in range(j+1, N):        # 빨간 영역
-            cnt += arr[s].count('R') # R의 개수를 세라
-        max_v = max(max_v, cnt)
-
-print(N*M -max_v)
+    print(N*M -max_v)
 
 '''
 mx 의 의미는 하얀색이 있어야 하는행, 파란색이 있어야 하는 행, 빨간색이 있어야할 행에 수정할 필요가 없는 영역의 개수 이다.
