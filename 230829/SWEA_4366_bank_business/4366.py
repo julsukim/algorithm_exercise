@@ -7,10 +7,11 @@ def dec_2(str):
 
 
 def dec_3(str):
-    num = 0
-    for i in range(len(str)-1, -1, -1):
-        num += int(str[i]) * (3**(len(str)-(i+1)))
-    return num
+    # num = 0
+    # for i in range(len(str)-1, -1, -1):
+    #     num += int(str[i]) * (3**(len(str)-(i+1)))
+    # return num
+    return int(str, 3)
 
 
 T = int(input())

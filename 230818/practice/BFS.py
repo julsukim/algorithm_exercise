@@ -28,3 +28,4 @@ for i in range(E):
     adj_l[v2].append(v1)
 
 bfs(1, 7)
+print(adj_l)
