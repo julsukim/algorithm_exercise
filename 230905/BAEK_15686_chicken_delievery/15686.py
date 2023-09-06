@@ -1,41 +1,48 @@
 import sys
 sys.stdin = open('input.txt')
 
-T = int(input())
-for tc in range(1, T+1):
-    N, M = map(int, input().split())
-    city = [list(map(int, input().split())) for _ in range(N)]
 
-    homes = []
-    stores = []
-    for i in range(N):
-        for j in range(N):
-            if city[i][j] == 1:
-                homes.append((i, j))
-            elif city[i][j] == 2:
-                stores.append((i, j))
+def cla_d(arr):
+    min_d = 0
+    for j in range(H):
+        p, q = homes[j]
+        dis = 10000
+        for k in range(M):
+            p2, q2 = stores[arr[k]]
+            if dis > abs(p - p2) + abs(q - q2):
+                dis = abs(p - p2) + abs(q - q2)
+        min_d += dis
+    return min_d
 
-    chi_dis = []
 
-    for i in range(len(stores)):
-        r1, c1 = stores[i]
-        dis = 0
-        for j in range(len(homes)):
-            r2, c2 = homes[j]
-            dis += abs(r1 - r2) + abs(c1 - c2)
-        chi_dis.append((i, dis))
+def nCr(n, r, s):
+    if r == 0:
+        result.append(cla_d(subset))
+    else:
+        for i in range(s, n-r+1):
+            subset[r-1] = arr[i]
+            nCr(n, r-1, i+1)
 
-    chi_dis.sort(key=lambda x:x[1])
 
-    min_min_chi = 0
-    for i in range(len(homes)):
-        p3, q3 = homes[i]
-        min_chi = 10000
-        for j in range(M):
-            p4, q4 = stores[chi_dis[j][0]]
-            mini = abs(p3 - p4) + abs(q3 - q4)
-            if min_chi > mini:
-                min_chi = mini
-        min_min_chi += min_chi
+N, M = map(int, input().split())
+city = [list(map(int, input().split())) for _ in range(N)]
 
-    print(min_min_chi)
+homes = []
+stores = []
+for i in range(N):
+    for j in range(N):
+        if city[i][j] == 1:
+            homes.append((i, j))
+        elif city[i][j] == 2:
+            stores.append((i, j))
+
+H = len(homes)
+S = len(stores)
+
+result = []
+arr = list(range(0, S))
+subset = [0]*M
+
+nCr(S, M, 0)
+
+print(min(result))
