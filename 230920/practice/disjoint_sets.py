@@ -10,7 +10,7 @@ def find_set(x):
         return x
 
     # return find_set(parent[x])
-    
+
     # 경로 압축
     parent[x] = find_set(parent[x])
     return parent[x]
@@ -32,8 +32,8 @@ def union(x, y):
         parent[y] = x
     else:
         parent[x] = y
+    # parent[y] = x
 
-    parent[y] = x
 
 union(0, 1)
 
