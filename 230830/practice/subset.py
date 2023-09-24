@@ -1,7 +1,7 @@
 a = [3, 6, 7, 1, 5, 4]
 N = 6
 
-for i in range(1<<N):     # 1<<N == 2**N
+for i in range(1<<N):   # 1<<N == 2**N
     subset1 = []
     for j in range(N):
         if i&(1<<j):    # j번 비트가 0이 아니면

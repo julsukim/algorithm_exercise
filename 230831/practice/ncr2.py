@@ -1,3 +1,6 @@
+import time
+
+
 def nCr(n, r, s):
     if r == 0:
         print(*comb)
@@ -7,8 +10,12 @@ def nCr(n, r, s):
             nCr(n, r-1, i+1)
 
 
-A = [1, 2, 3, 4, 5]
+start = time.time()
+A = list(range(1, 21))
 N = len(A)
-R = 3
+R = 5
 comb = [0] * R
 nCr(N, R, 0)
+end = time.time()
+
+print(f"{end - start:.6f} sec")
