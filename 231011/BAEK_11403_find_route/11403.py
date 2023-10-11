@@ -16,6 +16,14 @@ def dfs(k):
     return
 
 
+def dfs2(s, k):
+    for w in adj_arr[k]:
+        if visited[w] == 0:
+            visited[w] = 1
+            result[s][w] = 1
+            dfs2(s, w)
+
+
 N = int(input())
 arr = [list(map(int, input().split())) for _ in range(N)]
 
@@ -28,9 +36,10 @@ for i in range(N):
 result = [[0]*N for _ in range(N)]
 
 for i in range(N):
+    stat = i
     visited = [0] * N
     stack = []
-    dfs(i)
+    dfs2(stat, i)
 
 for i in range(N):
     print(*result[i])
