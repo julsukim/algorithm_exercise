@@ -30,7 +30,7 @@ def infusion(arr, c):
     global minimum
     if c >= minimum:
         return
-    if test(arr) == True:
+    if test(arr):
         if minimum > c:
             minimum = c
         return
