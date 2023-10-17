@@ -27,7 +27,13 @@ while fish_king < (C+1):
     for shark in survived:
         if shark[2] == 0:
             continue
-        pass
+        if shark[3] == 3:
+            if shark[1] + shark[2] <= C:
+                shark[1] += shark[2]
+            elif (shark[1] + shark[2])%C >1:
+                shark[1] = C - (shark[1] + shark[2] % C)
+            elif
+            shark[1] =
 
     sl = {}
     for shark in survived:
