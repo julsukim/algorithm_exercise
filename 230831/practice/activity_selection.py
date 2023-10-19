@@ -14,4 +14,4 @@ for i in range(1, N+1):
     if meet[i][0]>=meet[j][1]:   # si >= fj
         S.append(i)
         j = i
-print(S)
+print(len(S))

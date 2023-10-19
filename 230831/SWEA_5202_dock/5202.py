@@ -9,6 +9,7 @@ for tc in range(1, T+1):
         arr.append(list(map(int, input().split())))
     arr = [[0, 0]] + arr
     arr.sort(key=lambda x:x[1])
+    print(arr)
 
     S = []
     j = 0
