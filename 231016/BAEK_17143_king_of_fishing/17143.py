@@ -8,7 +8,7 @@ plus_r = list(range(1, R+1)) + list(range(R-1, 0, -1))
 minus_r = list(range(R, 1, -1)) + list(range(1, R+1))
 plus_c = list(range(1, C+1)) + list(range(C-1, 0, -1))
 minus_c = list(range(C, 1, -1)) + list(range(1, C+1))
-
+print(sharks)
 fish_king = 0
 tot = 0
 while fish_king < (C+1):
@@ -33,22 +33,31 @@ while fish_king < (C+1):
     for shark in survived:
         if shark[2] == 0:
             continue
-        if shark[3] == 1:
-            if not 0 <= shark[2]%R < R-shark[0]:
-                shark[3] = 2
-            shark[0] = plus_r[plus_r.index(shark[0])+(shark[2]%R)]
-        elif shark[3] == 2:
-            if not 0 <= shark[2]%C < shark[0]:
+        if shark[3] == 2:
+            p = minus_r[(-1*minus_r.index(shark[0])-1) - (shark[2]%R)+1]
+            n = minus_r[(-1*minus_r.index(shark[0])-1) - (shark[2]%R)]
+            if p < n:
                 shark[3] = 1
-            shark[0] = minus_r[(-1*minus_r.index(shark[0])-1) - (shark[2]%R)]
-        elif shark[3] == 3:
-            if not 0 <= shark[2]%C < C-shark[1]:
-                shark[3] = 4
-            shark[1] = plus_c[plus_c.index(shark[1])+(shark[2]%C)]
-        else:
-            if not 0 <= shark[2]%C < shark[1]:
+            shark[0] = n
+        elif shark[3] == 1:
+            p = plus_r[plus_r.index(shark[0]) + (shark[2]%R)-1]
+            n = plus_r[plus_r.index(shark[0]) + (shark[2]%R)]
+            if p > n:
+                shark[3] = 2
+            shark[0] = n
+        elif shark[3] == 4:
+            p = plus_c[plus_c.index(shark[1]) + (shark[2]%C)-1]
+            n = plus_c[plus_c.index(shark[1]) + (shark[2]%C)]
+            if p > n:
                 shark[3] = 3
-            shark[1] = minus_c[(-1*minus_c.index(shark[1])-1) - (shark[2]%C)]
+            shark[1] = n
+        elif shark[3] == 3:
+            p = minus_c[(-1*minus_c.index(shark[1])-1) - (shark[2]%C)+1]
+            n = minus_c[(-1*minus_c.index(shark[1])-1) - (shark[2]%C)]
+            if p < n:
+                shark[3] = 4
+            shark[1] = n
+    print(survived)
 
     sl = {}
     for shark in survived:
