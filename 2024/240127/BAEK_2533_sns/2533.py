@@ -7,6 +7,7 @@
 # ~~ 얼리 어답터가 아닌 사람들을 자신의 모든 친구들이 얼리 어답터일 때만 아이디어를 받아들임..
 import sys
 input = sys.stdin.readline
+sys.setrecursionlimit(10**6)
 
 N = int(input())
 arr = [[] for _ in range(N+1)]
@@ -33,6 +34,5 @@ def dfs(start):
 
 dfs(1)
 print(min(dp[1][0], dp[1][1]))
-print(dp)
 
 # dp[현재 노드][얼리어답터 여부 0: 얼리x 1: 얼리]

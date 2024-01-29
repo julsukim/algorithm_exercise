@@ -18,21 +18,58 @@
 # 두사람이 창업한 회사의 이름을 출력
 # abcdefghijklmnopqrstuvwxyz
 
-nine_apple = sorted(list(input()))
-cute_lover = sorted(list(input()), reverse=True)
-N = len(nine_apple)
-is_odd = N % 2 != 0
-ans = []
-k = 0
-l = 0
-for i in range(0, N//2):
-    ans.append(nine_apple[k])
-    ans.append(cute_lover[l])
-    k += 1
-    l += 1
-if is_odd:
-    ans.append(nine_apple[k])
-print(''.join(ans))
+# nine_apple = sorted(list(input()))
+# cute_lover = sorted(list(input()), reverse=True)
+# N = len(nine_apple)
+# is_odd = N % 2 != 0
+# ans = []
+# k = 0
+# l = 0
+# for i in range(0, N//2):
+#     ans.append(nine_apple[k])
+#     ans.append(cute_lover[l])
+#     k += 1
+#     l += 1
+# if is_odd:
+#     ans.append(nine_apple[k])
+# print(''.join(ans))
 
 # 음 서로의 정보를 다 안다고 한다....
 # bb, aa => ab가 되어야 함.
+# 구사과 ~ 가장 작은 문자열 < 큐트러버 ~ 가장 큰 문자열 -> 제일 앞으로
+# 만약에 반대거나 같으면 -> 가장 큰 걸 제일 뒤로
+# 마찬가지로 ~~ 반대로도 같게..!
+
+import sys
+input = sys.stdin.readline
+from collections import deque
+
+nine_apple = sorted(list(input().rstrip()))
+cute_lover = sorted(list(input().rstrip()), reverse=True)
+N = len(nine_apple)
+
+nine_apple = deque(nine_apple)
+cute_lover = deque(cute_lover)
+
+ans = ['']*N
+left = 0
+right = N-1
+for i in range(N):
+    if i%2 == 0:
+        if cute_lover and cute_lover[0] <= nine_apple[0]:
+            ans[right] = nine_apple.pop()
+            right -= 1
+        else:
+            ans[left] = nine_apple.popleft()
+            left += 1
+    else:
+        if nine_apple and nine_apple[0] >= cute_lover[0]:
+            ans[right] = cute_lover.pop()
+            right -= 1
+        else:
+            ans[left] = cute_lover.popleft()
+            left += 1
+print(''.join(ans))
+
+# 모르겠다!!!
+# 왜 조금씩 틀릴까용?????
