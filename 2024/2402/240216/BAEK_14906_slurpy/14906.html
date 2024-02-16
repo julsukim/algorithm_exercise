@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>14906</h1>
+  <script>
+    const slump = /([DE]F+)+G$/
+    const str1 = "FAST"
+    const str2 = "EAST"
+    const str3 = "DFST"
+    const str4 = "DFFG"
+    const str5 = "DFFEFFFG"
+
+    const slimp2 = /AH/
+    const slimp3 = /AB?(<slimp2>)C/
+    const slimp4 = /AB?(<slimp3>)C/
+    const str6 = "AH"
+    const str7 = "ABAHC"
+    const str8 = "ABABAHCC"
+    const str9 = "ADFFFFGC"
+    const str10 = "ABABAHC"
+    const str11 = "ADGC"
+
+    console.log(slump.test(str1))
+    console.log(slump.test(str2))
+    console.log(slump.test(str3))
+    console.log(slump.test(str4))
+    console.log(slump.test(str5))
+
+    console.log(str1.match(slump))
+    console.log(str2.match(slump))
+    console.log(str3.match(slump))
+    console.log(str4.match(slump))
+    console.log(str5.match(slump))
+
+    console.log(slimp2.test(str6) | slimp3.test(str6) | slimp4.test(str6))
+    console.log(slimp2.test(str7) | slimp3.test(str7) | slimp4.test(str7))
+    console.log(slimp2.test(str8) | slimp3.test(str8) | slimp4.test(str8))
+    console.log(slimp2.test(str9) | slimp3.test(str9) | slimp4.test(str9))
+    console.log(slimp2.test(str10) | slimp3.test(str10) | slimp4.test(str10))
+    console.log(slimp2.test(str11) | slimp3.test(str11) | slimp4.test(str11))
+
+    console.log(str6.match(slimp2) != null | str6.match(slimp3) != null | str6.match(slimp4) != null)
+    console.log(str7.match(slimp2) != null | str7.match(slimp3) != null | str7.match(slimp4) != null)
+    console.log(str8.match(slimp2) != null | str8.match(slimp3) != null | str8.match(slimp4) != null)
+    console.log(str9.match(slimp2) != null | str9.match(slimp3) != null | str9.match(slimp4) != null)
+    console.log(str10.match(slimp2) != null | str10.match(slimp3) != null | str10.match(slimp4) != null)
+    console.log(str11.match(slimp2) != null | str11.match(slimp3) != null | str11.match(slimp4) != null)
+  </script>
+</body>
+</html>
