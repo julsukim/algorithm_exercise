@@ -1,15 +1,15 @@
 from heapq import heappop, heappush
+import sys
+input = sys.stdin.readline
 
 N, K = map(int, input().split())
-
 INF = int(1e9)
-limit = K*2 + 1
 
 
 def dijkstra(start):
     queue = []
     heappush(queue, (0, start))
-    distance = [INF] * limit
+    distance = [INF] * 100001
     distance[start] = 0
 
     while queue:
@@ -18,28 +18,20 @@ def dijkstra(start):
         if distance[now] < dist:
             continue
 
-        for move in [-1, +1]:
-            next_node = now + move
-
-            if next_node < 0 or next_node >= limit:
-                continue
-
-            new_dist = dist + 1
-            if distance[next_node] <= new_dist:
-                continue
-
-            heappush(queue, (new_dist, next_node))
-
-        next_node = now * 2
-        if next_node < 0 or next_node >= limit:
-            continue
-        new_dist = dist
-        if distance[next_node] <= new_dist:
-            continue
-        heappush(queue, (new_dist, next_node))
+        for next in [now+1, now-1, now*2]:
+            if 0 <= next <= 100000:
+                if next == now*2 and distance[next] > dist:
+                    distance[next] = dist
+                    heappush(queue, (dist, next))
+                elif distance[next] > dist:
+                    distance[next] = dist + 1
+                    heappush(queue, (dist + 1, next))
 
     return distance
 
 
-result = dijkstra(N)
-print(result[K])
+if K <= N:
+    print(N-K)
+else:
+    result = dijkstra(N)
+    print(result[K])
