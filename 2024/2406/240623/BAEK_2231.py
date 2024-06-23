@@ -8,7 +8,6 @@ def finder(t):
 
 
 N = int(input())
-
 tmp = 1
 flag = False
 while tmp < N:
