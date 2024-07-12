@@ -4,9 +4,9 @@ const rl = readline.createInterface({
   input: process.stdin
 });
 
-let N;
-const arr = [];
-const prefixSum = [];
+let N, M;
+let arr = [];
+let prefixSum = [];
 let idx = 0;
 
 const getPrefix = (N, arr) => {
@@ -21,17 +21,18 @@ const getPrefix = (N, arr) => {
 
 rl.on('line', (line) => {
   if (idx === 0) {
-    N = parseInt(line);
+    [N, M] = line.split(' ').map(Number);
   } else if (idx === 1) {
-    arr.push(...line.split(' ').map(Number));
-
-    prefixSum.push(...getPrefix(N, arr));
+    arr = line.split(' ').map(Number);
+    prefixSum = getPrefix(N, arr);
   } else {
     const [i, j] = line.split(' ').map(Number);
     console.log(prefixSum[j] - prefixSum[i - 1]);
   }
+
   idx++;
 
-}).on('close', () => {
-
+  if (idx > M + 1) {
+    process.exit();
+  }
 });
