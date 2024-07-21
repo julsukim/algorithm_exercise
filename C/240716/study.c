@@ -364,3 +364,164 @@
 // atof(str); 문자열을 실수형으로 변환
 
 // itoa(value, str, radix); value를 변환하여 str에 radix 진수로 저장
+
+
+// ------------------------------------------------------
+// 기출문제
+
+// 05번
+
+// int main() {
+//     char *p = "KOREA";
+//     printf("%s\n", p);
+//     printf("%s\n", p+3);
+//     printf("%c\n", *p); // 출력 형식 유의할 것 %c
+//     printf("%c\n", *(p+3));
+//     printf("%c\n", *p+2); //K의 아스키코드값에 2를 더한 M 출력
+//     return 0;
+// }
+
+// 06번
+// struct Soojebi {
+//     char name[10];
+//     int age;
+// };
+// int main() {
+//     struct Soojebi s[] = {"Kim", 28, "Lee", 38, "Seo", 50};
+//     struct Soojebi *p;
+//     p = s;
+//     p++; // 값을 1 증가시켰으므로 s+1인 &s[1]을 저장하게 됨
+//     printf("%s\n", p->name); // Lee
+//     printf("%d\n", p->age); // 38
+// }
+
+// 12번
+// 빈칸에 연산자 넣기 문제
+// 정수를 역순으로 출력하기
+// 정수 나누기 정수를 하면 소수점은 버림 처리가 된다.
+
+// 15번
+// "\0"은 문자열에서 NULL을 의미
+
+// 23번
+// switch - case 문에서 break 가 없다면 다음 case가 계속 출력됨.
+// int main() {
+//     int n[3] = {75, 95, 82};
+//     int i, sum = 0;
+//
+//     for (i=0;i<3;i++) {
+//         sum += n[i];
+//     }
+//
+//     switch(sum/30) {
+//         case 10:
+//         case 9: printf("A");
+//         case 8: printf("B");
+//         case 7:
+//         case 6: printf("C");
+//         default: printf("D");
+//     }
+//
+//     return 0;
+// }
+
+// 25번
+// 홍길동
+// 김철수
+// 박영희
+// char n[30];
+// char *soojebi() {
+//     gets(n);
+//     return n;
+// }
+// int main() {
+//     char *p1 = soojebi();
+//     char *p2 = soojebi();
+//     char *p3 = soojebi();
+//     printf("%s\n", p1); // 박영희
+//     printf("%s\n", p2); // 박영희
+//     printf("%s\n", p3); // 박영희
+//     return 0;
+// }
+
+// 29번
+// int perfect_number(int n) {
+//     int i, sum = 0;
+//     for (i=1;i<=n/2;i++) {
+//         if (n%i == 0) {
+//             sum += i;
+//         }
+//     }
+//     if (n == sum) return 1;
+//     return 0;
+// }
+// int main() {
+//     int i, sum = 0;
+//     for (i=2;i<=100;i++) {
+//         if (perfect_number(i)) {
+//             printf("%d\n", i);
+//             sum += i;
+//         }
+//     }
+//     printf("%d", sum);
+//     return 0;
+// }
+
+
+// 예상 문제
+
+// 02번
+// 빈칸 채우기
+
+#include<stdlib.h>
+#include<time.h>
+
+// int main() {
+//     int hist[6] = {0, };
+//     int n, i = 0;
+//     srand(time(NULL));
+//
+//     do {
+//         i++;
+//         n = rand()%6 + 1;
+//         hist[n-1] += 1;
+//     } while(i < 10);
+//
+//     for (i=0;i<6;i++) {
+//         printf("hist[%d] = %d\n", i, hist[i]);
+//     }
+//
+//     return 0;
+// }
+
+
+// 09번
+// 0아니면 참, 0이면 거짓
+// 계산 결과가 참이라면 1, 거짓이라면 0
+
+// int main(int argc, char *argv[]) {
+//     int n1=1, n2=2, n3=3;
+//     int r1, r2, r3;
+
+//     r1 = (n2<=2) || (n3>3); // 1
+//     r2 = !n3; // 0
+//     r3 = (n1>1) && (n2<3); // 0
+
+//     printf("%d", r3 - r2 + r1);
+//     return 0;
+// }
+
+// 6번
+// 문제를 잘 읽자..
+// 타입을 잘 보자. 문자열이면 ''해야지.
+
+// 10번
+// int fn(char* a) {
+//     int i = 0;
+//     for (i=0; a[i]!='\0'; i++); // i가 5가 되었을 때 조건을 만족하지 못하고 종료.
+//     return i;
+// }
+// int main() {
+//     char a[10] = "Hello";
+//     printf("%d", fn(a));
+// }
