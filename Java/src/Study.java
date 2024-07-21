@@ -428,3 +428,75 @@ import java.io.IOException;
 //        c.fn();
 //    }
 //}
+
+
+// ---------------------------------------------------
+
+// 기출 문제
+// 07번
+// 08번
+// 11번
+// 14번
+// 15번
+// 16번
+
+// 18번 스레드 -> Runnable 인터페이스 사용.
+//class Car implements Runnable {
+//    int a;
+//    // Runnable 인터페이스를 구현한 클래스는 run() 메서드를 정의해야 한다.
+//    public void run() {
+//        // 스레드가 실행할 작업 작성
+//        System.out.println("run");
+//    }
+//}
+//public class Study {
+//    public static void main(String[] args) {
+//        Thread t1 = new Thread(new Car());
+//        t1.start();
+//    }
+//}
+
+// 27번
+//public class Study {
+//    public static void main(String[] args) {
+//        Parent c = new Child();
+//        c.paint();
+//        c.draw();
+//    }
+//}
+//class Parent {
+//    public void paint() {
+//        System.out.print("A");
+//        draw();
+//    }
+//    public void draw() {
+//        System.out.print("B");
+//        draw(); // Child 클래스에서 draw 메서드를 오버라이딩하고 있기 때문에 Child 클래스의 draw 메서드를 실행.
+//    }
+//}
+//class Child extends Parent {
+//    public void paint() {
+//        super.draw();
+//        System.out.print("C");
+//        this.draw();
+//    }
+//    public void draw() {
+//        System.out.print("D");
+//    }
+//}
+
+// 29번
+//class Person {
+//    private String name;
+//
+//    public Person(String val) {
+//        name = val;
+//    }
+//
+//    public static String get() {
+//        return name; // 오류 발생 (
+//        // static 메서드는 모든 Person 객체에서 공유해서 사용하는데,
+//        // name은 제각기 다를 수 있기 때문에 에러 발생.
+//        // person.name을 사용하거나, name에 static을 붙여야 한다.
+//    }
+//}
