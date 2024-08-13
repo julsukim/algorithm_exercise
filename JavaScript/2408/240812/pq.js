@@ -20,14 +20,19 @@ class PriorityQueue {
   }
 
   enqueue(element, priority) {
+    // 힙의 마지막 위치에 삽입
     this.heap.push({ element, priority });
+    // 재정렬
     this.bubbleUp(this.heap.length - 1);
   }
 
   bubbleUp(index) {
     let currentIndex = index;
+    // 부모 노드 확인
     let parentIndex = this.getParentIndex(currentIndex);
 
+    // 비교 및 교환
+    // 자식을 부모 방향으로 이동시키기
     while (currentIndex > 0 && this.heap[currentIndex].priority < this.heap[parentIndex].priority) {
       this.swap(currentIndex, parentIndex);
       currentIndex = parentIndex;
@@ -44,28 +49,36 @@ class PriorityQueue {
       return this.heap.pop().element;
     }
 
+    // 루트 노드를 제거하고 마지막 노드를 루트로 올림
     const minElement = this.heap[0].element;
     this.heap[0] = this.heap.pop();
+    // 재정렬
     this.bubbleDown(0);
     return minElement;
   }
 
   bubbleDown(index) {
     let currentIndex = index;
+    // 자식 노드들
     let leftChildIndex = this.getLeftChildIndex(currentIndex);
     let rightChildIndex = this.getRightChildIndex(currentIndex);
 
+    // 비교 및 교환
+    // 부모를 자식 방향으로 이동시키기
     while (leftChildIndex < this.heap.length) {
+      // 두 자식 중 작은 우선순위를 가진 자식 구하기
       let smallerChildIndex = leftChildIndex;
 
       if (rightChildIndex < this.heap.length && this.heap[rightChildIndex].priority < this.heap[leftChildIndex].priority) {
         smallerChildIndex = rightChildIndex;
       }
 
+      // 자식들보다 우선순위가 낮은 경우 종료
       if (this.heap[currentIndex].priority <= this.heap[smallerChildIndex].priority) {
         break;
       }
 
+      // 교환
       this.swap(currentIndex, smallerChildIndex);
       currentIndex = smallerChildIndex;
       leftChildIndex = this.getLeftChildIndex(currentIndex);
