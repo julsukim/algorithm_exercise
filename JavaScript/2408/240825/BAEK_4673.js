@@ -7,7 +7,7 @@ while (true) {
   for (let i=0; i<numberArr.length; i++) {
     notSelfNumber += numberArr[i];
   }
-  if (notSelfNumber > 11000) {
+  if (number > 10001) {
     break;
   } else {
     number++;
