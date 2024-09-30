@@ -1,7 +1,7 @@
 ## 함수 및 기타 메서드 정리
 
 <details>
-<summary>deque from collections</summary>
+<summary><strong>deque from collections</strong></summary>
 
 ```python
 from collections import deque
@@ -46,7 +46,7 @@ print(index_3)  # 3
 </details>
 
 <details>
-<summary>enumerate</summary>
+<summary><strong>enumerate</strong></summary>
 
 ```python
 # enumerate(iterable, start=0)
@@ -65,7 +65,7 @@ for index, fruit in enumerate(fruits):
 </details>
 
 <details>
-<summary>lambda</summary>
+<summary><strong>lambda</strong></summary>
 
 ```python
 # lambda 매개변수 : 표현식
@@ -91,7 +91,7 @@ print(data)
 </details>
 
 <details>
-<summary>list comprehension</summary>
+<summary><strong>list comprehension</strong></summary>
 
 ```python
 # 리스트를 간결하고 효율적으로 생성할 수 있는 문법
@@ -108,14 +108,58 @@ print(even_squares)  # [4, 16]
 </details>
 
 <details>
-<summary>itertools</summary>
+<summary><strong>itertools</strong></summary>
+
 `itertools.product()`
+- 두 개 이상의 리스트나 iterable에서 가능한 모든 조합을 생성
 
 ```python
 import itertools
+# itertools.product(*iterables, repeat=1)
 
 # 두 리스트의 데카르트 곱
 result = list(itertools.product([1, 2], ['A', 'B']))
 print(result)  # [(1, 'A'), (1, 'B'), (2, 'A'), (2, 'B')]
+
+# 같은 iterable을 2번 반복하여 데카르트 곱을 구함
+result = list(itertools.product([1, 2], repeat=2))
+print(result)  # [(1, 1), (1, 2), (2, 1), (2, 2)]
+```
+
+`itertools.permutations()`
+- 순열을 생성. 주어진 순서에 따라 원소를 나열
+
+```python
+# itertools.permutations(iterable, r=None)
+# r : 선택할 원소의 수 (기본값은 iterable의 전체 길이)
+
+# 순열 생성 (길이 지정 가능, 기본값은 전체 길이)
+result = list(itertools.permutations([1, 2, 3]))
+print(result)  # [(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]
+
+# 순열에서 2개씩 선택하는 경우
+result = list(itertools.permutations([1, 2, 3], 2))
+print(result)  # [(1, 2), (1, 3), (2, 1), (2, 3), (3, 1), (3, 2)]
+```
+
+`itertools.combinations()`
+- 조합을 생성. 순서 고려하지 않음, 지정된 크기의 조합을 반환
+
+```python
+# itertools.combinations(iterable, r)
+# r : 선택할 원소의 수. 필수로 지정해야 한다.
+
+# 2개씩 조합 생성
+result = list(itertools.combinations([1, 2, 3], 2))
+print(result)  # [(1, 2), (1, 3), (2, 3)]
+```
+
+`itertools.combinations_with_replacement()`
+- 중복을 허용한 조합 생성
+
+```python
+result = list(itertools.combinations_with_replacement([1, 2, 3], 2))
+print(result)  # [(1, 1), (1, 2), (1, 3), (2, 2), (2, 3), (3, 3)]
+
 ```
 </details>
