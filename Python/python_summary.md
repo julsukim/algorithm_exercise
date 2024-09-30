@@ -63,3 +63,59 @@ for index, fruit in enumerate(fruits):
 # 2 cherry
 ```
 </details>
+
+<details>
+<summary>lambda</summary>
+
+```python
+# lambda 매개변수 : 표현식
+
+# 일반 함수와 lambda 함수의 정의 차이
+def add(x, y):
+    return x + y
+print(add(2, 3)) # 5
+
+add = lambda x, y: x + y
+print(add(2, 3)) # 5
+
+# sort, sorted() 함수와 lambda
+# 각 요소의 두 번째 값을 기준으로 정렬
+data = [(1, 'apple'), (2, 'banana'), (3, 'cherry')]
+sorted_data = sorted(data, key=lambda x: x[1])
+print(sorted_data)
+data.sort(key=lambda x: x[1])
+print(data)
+# 출력: [(1, 'apple'), (2, 'banana'), (3, 'cherry')]
+
+```
+</details>
+
+<details>
+<summary>list comprehension</summary>
+
+```python
+# 리스트를 간결하고 효율적으로 생성할 수 있는 문법
+[표현식 for 항목 in iterable]
+
+# 1부터 5까지 숫자의 제곱을 구하여 새로운 리스트 생성
+squares = [x**2 for x in range(1, 6)]
+print(squares)  # [1, 4, 9, 16, 25]
+
+# 조건을 추가하여 짝수만 리스트에 추가
+even_squares = [x**2 for x in range(1, 6) if x % 2 == 0]
+print(even_squares)  # [4, 16]
+```
+</details>
+
+<details>
+<summary>itertools</summary>
+`itertools.product()`
+
+```python
+import itertools
+
+# 두 리스트의 데카르트 곱
+result = list(itertools.product([1, 2], ['A', 'B']))
+print(result)  # [(1, 'A'), (1, 'B'), (2, 'A'), (2, 'B')]
+```
+</details>
