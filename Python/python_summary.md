@@ -46,6 +46,137 @@ print(index_3)  # 3
 </details>
 
 <details>
+<summary><strong>Counter from collections</strong></summary>
+
+- `Counter` 클래스는 특정 요소의 등장 횟수를 셀 수 있는 클래스
+
+1. 리스트나 문자열에서 요소의 등장 횟수 세기
+```python
+from collections import Counter
+
+string = "hello world"
+counter = Counter(string)
+print(counter)
+# Counter({'l': 3, 'o': 2, 'h': 1, 'e': 1, ' ': 1, 'w': 1, 'r': 1, 'd': 1})
+
+fruits = ['apple', 'banana', 'orange', 'apple', 'orange', 'banana', 'apple']
+counter = Counter(fruits)
+print(counter)
+# Counter({'apple': 3, 'banana': 2, 'orange': 2})
+```
+
+2. 요소별로 개수 접근하기
+```python
+from collections import Counter
+
+fruits = ['apple', 'banana', 'orange', 'apple', 'orange', 'banana', 'apple']
+counter = Counter(fruits)
+
+print(counter['apple'])  # 3
+print(counter['banana']) # 2
+
+print(counter['pear']) # 0
+# 존재하지 않는 요소에 접근하면, 기본적으로 0을 반환
+```
+
+3. 가장 많이 등장한 요소 찾기
+```python
+from collections import Counter
+
+fruits = ['apple', 'banana', 'orange', 'apple', 'orange', 'banana', 'apple']
+counter = Counter(fruits)
+
+print(counter.most_common(2))  # [('apple', 3), ('banana', 2)]
+```
+
+4. 요소 추가 및 업데이트
+```python
+from collections import Counter
+
+fruits = ['apple', 'banana', 'orange', 'apple', 'orange', 'banana', 'apple']
+counter = Counter(fruits)
+
+# 직접 요소의 빈도수 수정
+counter['banana'] += 1
+print(counter)  # Counter({'apple': 3, 'banana': 3, 'orange': 2})
+```
+- `update()` 메서드를 사용하여 업데이트
+```python
+from collections import Counter
+
+counter = Counter("apple")
+print(counter)  # Counter({'p': 2, 'a': 1, 'l': 1, 'e': 1})
+
+# 문자열로 update
+counter.update("banana")
+print(counter)  # Counter({'a': 4, 'p': 2, 'n': 2, 'l': 1, 'e': 1, 'b': 1})
+
+counter = Counter(['apple', 'banana'])
+print(counter)  # Counter({'apple': 1, 'banana': 1})
+
+# 리스트로 update
+counter.update(['apple', 'orange'])
+print(counter)  # Counter({'apple': 2, 'banana': 1, 'orange': 1})
+
+counter = Counter("apple")
+print(counter)  # Counter({'p': 2, 'a': 1, 'l': 1, 'e': 1})
+
+# 딕셔너리로 update
+counter.update({'p': 3, 'a': 2})
+print(counter)  # Counter({'p': 5, 'a': 3, 'l': 1, 'e': 1})
+
+counter1 = Counter("apple")
+counter2 = Counter("banana")
+
+# 다른 Counter로 update
+counter1.update(counter2)
+print(counter1)  # Counter({'a': 4, 'p': 2, 'n': 2, 'l': 1, 'e': 1, 'b': 1})
+```
+
+5. 카운터 간의 연산
+- `Counter`는 수학적 연산도 지원.
+- 객체 간의 덧셈, 뺄셈, 교집합, 합집합 등의 연산을 할 수 있음
+
+```python
+from collections import Counter
+
+counter1 = Counter(['a', 'b', 'c', 'a'])
+counter2 = Counter(['a', 'b', 'b', 'd'])
+
+result = counter1 + counter2
+print(result)  # Counter({'a': 3, 'b': 3, 'c': 1, 'd': 1})
+
+result = counter1 - counter2
+print(result)  # Counter({'c': 1, 'a': 1})
+
+result = counter1 & counter2
+print(result)  # Counter({'a': 1, 'b': 1})
+
+result = counter1 | counter2
+print(result)  # Counter({'a': 2, 'b': 2, 'c': 1, 'd': 1})
+```
+
+6. Counter 객체를 리스트로 변환
+- `elements()` 메서드를 사용하면 각 요소를 등장 횟수만큼 반복하여 리스트로 변환
+
+```python
+counter = Counter({'a': 2, 'b': 3, 'c': 1})
+elements_list = list(counter.elements())
+print(elements_list)  # ['a', 'a', 'b', 'b', 'b', 'c']
+```
+
+7. 빈도수 0 이하의 값 제거
+- `Counter` 객체는 0 이하의 빈도수를 허용하지만, 0 이하의 항목을 제거하고 싶을 때는 `+` 연산을 사용
+
+```python
+counter = Counter({'a': 2, 'b': -1, 'c': 0})
+counter += Counter()  # 0 이하 값 제거
+print(counter)  # Counter({'a': 2})
+```
+
+</details>
+
+<details>
 <summary><strong>enumerate</strong></summary>
 
 ```python
