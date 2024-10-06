@@ -1,5 +1,116 @@
 ## 함수 및 기타 메서드 정리
 
+---
+
+<details>
+<summary><strong>string</strong></summary>
+
+
+1. `str.upper()`
+   - 문자열을 모두 대문자로 변환합니다.
+   - ```python
+     text = "hello"
+     print(text.upper())  # HELLO
+     ```
+
+2. `str.lower()`
+   - 문자열을 모두 소문자로 변환합니다.
+   - ```python
+     text = "HELLO"
+     print(text.lower())  # hello
+     ```
+
+3. `str.capitalize()`
+   - 문자열의 첫 글자를 대문자로 변환합니다.
+   - ```python
+     text = "hello world"
+     print(text.capitalize())  # Hello world
+     ```
+
+4. `str.title()`
+   - 각 단어의 첫 글자를 대문자로 변환합니다.
+   - ```python
+     text = "hello world"
+     print(text.title())  # Hello World
+     ```
+
+5. `str.strip()`
+   - 문자열 양쪽 끝의 공백이나 특정 문자를 제거합니다.
+   - ```python
+     text = "  hello  "
+     print(text.strip())  # "hello"
+     ```
+
+6. `str.lstrip()` / `str.rstrip()`
+   - 왼쪽(lstrip()) 또는 오른쪽(rstrip())의 공백을 제거합니다.
+   - ```python
+     text = "  hello  "
+     print(text.lstrip())  # "hello  "
+     print(text.rstrip())  # "  hello"
+     ```
+
+7. `str.replace(old, new)`
+   - 문자열 내의 특정 부분을 다른 문자열로 대체합니다.
+   - ```python
+     text = "hello world"
+     print(text.replace("world", "Python"))  # hello Python
+     ```
+
+8. `str.split(sep)`
+   - 문자열을 특정 구분자를 기준으로 나누어 리스트로 반환합니다.
+   - ```python
+     text = "apple,banana,cherry"
+     print(text.split(","))  # ['apple', 'banana', 'cherry']
+     ```
+
+9. `str.join(iterable)`
+   - 문자열 리스트를 특정 구분자로 연결하여 하나의 문자열로 만듭니다.
+   - ```
+     words = ['apple', 'banana', 'cherry']
+     print(", ".join(words))  # apple, banana, cherry
+     ```
+
+10. `str.find(sub)`
+    - 문자열 내에서 특정 부분 문자열을 찾아 인덱스를 반환합니다. 찾지 못하면 -1을 반환합니다.
+    - ```python
+      text = "hello world"
+      print(text.find("world"))  # 6
+      ```
+
+11. `str.count(sub)`
+    - 문자열 내에서 특정 부분 문자열이 몇 번 등장하는지 셉니다.
+    - ```python
+      text = "banana"
+      print(text.count("a"))  # 3
+      ```
+
+12. `str.startswith(prefix)` / `str.endswith(suffix)`
+    - 문자열이 특정 문자열로 시작하거나 끝나는지 여부를 반환합니다.
+    - ```python
+      text = "hello world"
+      print(text.startswith("hello"))  # True
+      print(text.endswith("world"))    # True
+      ```
+
+13. `str.isdigit()` / `str.isalpha()` / `str.isalnum()`
+    - 문자열이 숫자(isdigit()), 알파벳(isalpha()), 또는 알파벳과 숫자로만 이루어져 있는지(`isalnum()`) 확인합니다.
+    - ```python
+      text = "12345"
+      print(text.isdigit())  # True
+      print(text.isalpha())  # False
+      ```
+
+14. `str.zfill(width)`
+    - 문자열을 특정 길이로 맞추고, 앞쪽을 0으로 채웁니다.
+    - ```python
+      text = "42"
+      print(text.zfill(5))  # 00042
+      ```
+
+</details>
+
+---
+
 <details>
 <summary><strong>deque from collections</strong></summary>
 
