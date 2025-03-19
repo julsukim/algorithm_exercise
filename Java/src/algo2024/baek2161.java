@@ -1,3 +1,5 @@
+package algo2024;
+
 import java.io.*;
 import java.util.*;
 
