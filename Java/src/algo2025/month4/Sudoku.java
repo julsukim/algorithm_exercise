@@ -2,8 +2,6 @@ package algo2025.month4;
 
 import java.io.IOException;
 
-import java.io.IOException;
-
 public class Sudoku {
     public static void main(String[] args) throws IOException {
         int[][] board = {
