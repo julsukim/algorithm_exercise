@@ -45,23 +45,22 @@ public class Baek1647 {
     }
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
+        int N = readInt();
+        int M = readInt();
 
-        parent = new int[N+1];
-        rank = new int[N+1];
-        for (int i = 0; i <= N; i++) {
+        parent = new int[N + 1];
+        rank = new int[N + 1];
+        for (int i = 1; i <= N; i++) {
             parent[i] = i;
             rank[i] = 0;
         }
 
         Edge[] edges = new Edge[M];
         for (int i = 0; i < M; i++) {
-            st = new StringTokenizer(br.readLine());
-            Edge edge = new Edge(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
-            edges[i] = edge;
+            int from = readInt();
+            int to = readInt();
+            int weight = readInt();
+            edges[i] = new Edge(from, to, weight);
         }
 
         Arrays.sort(edges);
@@ -78,5 +77,14 @@ public class Baek1647 {
         }
 
         System.out.println(mstWeight - maximumWeight);
+    }
+
+    // 입력을 빠르게 처리하는 함수
+    private static int readInt() throws IOException {
+        int c, n = 0;
+        while ((c = System.in.read()) > 32) { // 공백(스페이스, 개행 등)보다 큰 값만 처리
+            n = (n * 10) + (c & 15);
+        }
+        return n;
     }
 }
